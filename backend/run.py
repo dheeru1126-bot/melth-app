@@ -1,6 +1,10 @@
 from dotenv import load_dotenv
 load_dotenv()
 import os
+
+# Create instance folder BEFORE anything else
+os.makedirs(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance'), exist_ok=True)
+
 from app import create_app, db
 from app.models.user import User
 from app.models.mood import Mood
@@ -8,9 +12,6 @@ from app.models.chat import Chat
 from app.models.resource import Resource
 
 app = create_app()
-
-# Create instance folder if it doesn't exist
-os.makedirs(os.path.join(os.path.dirname(__file__), 'instance'), exist_ok=True)
 
 @app.cli.command("init-db")
 def init_db():
