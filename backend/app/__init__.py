@@ -20,7 +20,7 @@ def create_app(config_class=Config):
 
     # Initialize extensions with app
     db.init_app(app)
-    cors.init_app(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+    cors.init_app(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "https://melth-frontend.vercel.app"]}})
     jwt.init_app(app)
     bcrypt.init_app(app)
     limiter.init_app(app)
